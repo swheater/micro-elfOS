@@ -1,0 +1,6 @@
+micro-elfOS
+-----------
+
+micro-elfOS is a platform for deploying and execution applications to Microcontroller.
+
+The primary target platform, at present, are ARM Cortex-M.
