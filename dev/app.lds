@@ -4,8 +4,8 @@
 
 MEMORY
 {
-	flash (rx) : ORIGIN = 0x0000800, LENGTH = 62K
-	ram (rwx) : ORIGIN = 0x1FFFF800, LENGTH = 8K
+	flash (rx)  : ORIGIN = 0x00000000, LENGTH = 62K
+	ram   (rwx) : ORIGIN = 0x1FFFF800, LENGTH = 8K
 }
 
 SECTIONS
@@ -14,13 +14,13 @@ SECTIONS
 	{
 		* (.text);
 	} > flash
-	.data :
-	{
-		* (.data);
-	} > ram
 	.rodata :
 	{
 		* (.rodata);
+	} > flash
+	.data :
+	{
+		* (.data);
 	} > ram
 	.bss :
 	{

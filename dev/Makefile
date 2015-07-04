@@ -19,7 +19,6 @@ OBJS = Source/Init.o \
        \
        Source/App.o
 
-
 all: app.hex
 
 .s.o:
