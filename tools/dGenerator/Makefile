@@ -7,20 +7,13 @@ export C++C         = g++
 export C++CFLAGS    = -Wall -O -IHeader
 export CC           = gcc
 export CCFLAGS      = -Wall -O -IHeader
-export LD           = ld
-export LDFLAGS      =
-export OBJCOPY      = arm-none-eabi-objcopy
-export OBJCOPYFLAGS =
-export SIZE         = arm-none-eabi-size
-export SIZEFLAGS    = 
+export LD           = g++
+export LDFLAGS      = -Wall -O
 export RM           = rm
 
-OBJS = Source/Init.o \
-       \
-       Source/App.o \
-       Source/Memory.o
+OBJS = Source/dGenerator.o
 
-all: app.hex
+all: dGenerator
 
 .c.o:
 	$(CC) $(CCFLAGS) -o $@ -c $<
@@ -28,8 +21,8 @@ all: app.hex
 .cc.o:
 	$(C++C) $(C++CFLAGS) -o $@ -c $<
 
-dGen: $(OBJS)
-	$(LD) $(LDFLAGS) -O $(OBJS)
+dGenerator: $(OBJS)
+	$(C++C) $(LDFLAGS) -o $@ $(OBJS)
 
 clean:
 	$(MAKE) -C Header clean
