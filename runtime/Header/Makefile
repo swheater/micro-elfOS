@@ -5,4 +5,6 @@
 all:
 
 clean:
+	$(MAKE) -C melfos clean
 	$(RM) -f *~ *.o
+	

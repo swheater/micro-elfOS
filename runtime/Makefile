@@ -20,7 +20,9 @@ export RM           = rm
 OBJS = Source/Init.o \
        \
        Source/App.o \
-       Source/Memory.o
+       Source/Memory.o \
+       \
+       Source/melfos/DIO.o
 
 all: app.hex
 

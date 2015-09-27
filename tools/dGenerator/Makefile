@@ -11,7 +11,7 @@ export LD           = g++
 export LDFLAGS      = -Wall -O
 export RM           = rm
 
-OBJS = Source/dGenerator.o
+OBJS = Source/dGenerator.o Source/Device.o Source/Feature.o
 
 all: dGenerator
 
@@ -22,9 +22,10 @@ all: dGenerator
 	$(C++C) $(C++CFLAGS) -o $@ -c $<
 
 dGenerator: $(OBJS)
-	$(C++C) $(LDFLAGS) -o $@ $(OBJS)
+	$(LD) $(LDFLAGS) -o $@ $(OBJS)
 
 clean:
 	$(MAKE) -C Header clean
 	$(MAKE) -C Source clean
 	$(RM) -f *~
+	$(RM) -f dGenerator
