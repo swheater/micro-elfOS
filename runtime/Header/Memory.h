@@ -10,7 +10,7 @@ typedef unsigned short     Word16;
 typedef unsigned int       Word32;
 typedef unsigned long long Word64;
 
-extern void setWord(volatile Word32* address, Word32 value);
-extern Word32 getWord(volatile Word32* address);
+extern void setWord32(volatile Word32* address, Word32 value);
+extern Word32 getWord32(volatile Word32* address);
 
 #endif

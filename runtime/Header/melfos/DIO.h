@@ -9,16 +9,16 @@ class DIO
 {
 public:
 	enum Direction {INPUT, OUTPUT};
-	enum Level     {LOW, HIGH};
+	enum Level     {LOW, HIGH, UNDRIVEN};
 
 	DIO();
-    virtual ~DIO();
+    ~DIO();
 
-    virtual Direction getDirection() = 0;
-    virtual void      setDirection(Direction direction) = 0;
+    Direction getDirection();
+    void      setDirection(Direction direction);
 
-    virtual Level getLevel() = 0;
-    virtual void  setLevel(Level level) = 0;
+    Level getLevel();
+    void  setLevel(Level level);
 };
 
 #endif
