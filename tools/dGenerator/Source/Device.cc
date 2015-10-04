@@ -20,30 +20,30 @@ Device::~Device()
 
 string Device::getName()
 {
-	return _name;
+    return _name;
 }
 
 void Device::setName(string name)
 {
-	_name = name;
+    _name = name;
 }
 
 bool Device::getAbstract()
 {
-	return _abstract;
+    return _abstract;
 }
 
 void Device::setAbstract(bool abstract)
 {
-	_abstract = abstract;
+    _abstract = abstract;
 }
 
 Device* Device::getBasis()
 {
-	return _basis;
+    return _basis;
 }
 
 void Device::setBasis(Device* basis)
 {
-	_basis = basis;
+    _basis = basis;
 }

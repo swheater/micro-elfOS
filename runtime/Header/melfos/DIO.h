@@ -8,10 +8,10 @@
 class DIO
 {
 public:
-	enum Direction {INPUT, OUTPUT};
-	enum Level     {LOW, HIGH, UNDRIVEN};
+    enum Direction {INPUT, OUTPUT};
+    enum Level     {LOW, HIGH, UNDRIVEN};
 
-	DIO();
+    DIO();
     ~DIO();
 
     Direction getDirection();

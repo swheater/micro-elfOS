@@ -20,30 +20,30 @@ Feature::~Feature()
 
 string Feature::getName()
 {
-	return _name;
+    return _name;
 }
 
 void Feature::setName(string name)
 {
-	_name = name;
+    _name = name;
 }
 
 bool Feature::getAbstract()
 {
-	return _abstract;
+    return _abstract;
 }
 
 void Feature::setAbstract(bool abstract)
 {
-	_abstract = abstract;
+    _abstract = abstract;
 }
 
 Feature* Feature::getBasis()
 {
-	return _basis;
+    return _basis;
 }
 
 void Feature::setBasis(Feature* basis)
 {
-	_basis = basis;
+    _basis = basis;
 }
