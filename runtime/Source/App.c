@@ -14,15 +14,15 @@
 #define GPIO_PORTC_IR       ((Word32*) 0x400FF090)
 #define GPIO_PORTC_DR       ((Word32*) 0x400FF094)
 
-#define WDOG_STATUSCTRLHIGH ((Word32*) 0x40052000)
-#define WDOG_STATUSCTRLLOW  ((Word32*) 0x40052002)
-#define WDOG_UNLOCK         ((Word32*) 0x4005200E)
+#define WDOG_STATUSCTRLHIGH ((Word16*) 0x40052000)
+#define WDOG_STATUSCTRLLOW  ((Word16*) 0x40052002)
+#define WDOG_UNLOCK         ((Word16*) 0x4005200E)
 
 void setup(void)
 {
-    setWord32(WDOG_UNLOCK, 0xC520);
-    setWord32(WDOG_UNLOCK, 0xD928);
-    setWord32(WDOG_STATUSCTRLHIGH, 0x0010);
+    setWord16(WDOG_UNLOCK, 0xC520);
+    setWord16(WDOG_UNLOCK, 0xD928);
+    setWord16(WDOG_STATUSCTRLHIGH, 0x0010);
 
     setWord32(SIM_SCGC5, getWord32(SIM_SCGC5) | (1 << 11));
     setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
