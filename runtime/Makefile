@@ -24,7 +24,13 @@ OBJS = Source/Init.o \
        Source/App.o \
        Source/Memory.o \
        \
-       Source/melfos/DIO.o
+       Source/melfos/DIO.o \
+       Source/melfos/SIM.o \
+       Source/melfos/WDT.o \
+       \
+       Source/melfos/mkx2x/DIOImpl.o \
+       Source/melfos/mkx2x/SIMImpl.o \
+       Source/melfos/mkx2x/WDTImpl.o
 
 all: app.hex
 

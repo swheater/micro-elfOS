@@ -12,7 +12,7 @@ using namespace std;
 class Feature
 {
 public:
-	Feature(string name, bool abstract, Feature *basis);
+    Feature(string name, bool abstract, Feature *basis);
     virtual ~Feature();
 
     string getName();
