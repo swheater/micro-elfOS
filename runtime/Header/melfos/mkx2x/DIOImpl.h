@@ -10,14 +10,16 @@
 class DIOImpl
 {
 public:
-    DIOImpl();
-    ~DIOImpl();
+    DIOImpl(void);
+    ~DIOImpl(void);
 
-    DIO::Direction getDirection();
+    static void begin(void);
+
+    DIO::Direction getDirection(void);
     void           setDirection(DIO::Direction direction);
 
-    DIO::Level getLevel();
-    void       setLevel(DIO::Level level);
+    DIO::Level getLevel(void);
+    static void setLevel(DIO::Level level);
 };
 
 #endif

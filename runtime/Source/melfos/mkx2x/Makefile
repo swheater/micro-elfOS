@@ -5,5 +5,4 @@
 all:
 
 clean:
-	$(MAKE) -C mkx2x clean
 	$(RM) -f *~ *.o

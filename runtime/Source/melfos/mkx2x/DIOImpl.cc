@@ -14,26 +14,32 @@
 #define GPIO_PORTC_IR   ((Word32*) 0x400FF090)
 #define GPIO_PORTC_DR   ((Word32*) 0x400FF094)
 
-DIOImpl::DIOImpl()
+DIOImpl::DIOImpl(void)
 {
     setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
     setWord32(GPIO_PORTC_DR,   0b00000000000000000000000000100000);
 }
 
-DIOImpl::~DIOImpl()
+DIOImpl::~DIOImpl(void)
 {
 }
 
-DIO::Direction DIOImpl::getDirection()
+void DIOImpl::begin(void)
 {
-    return DIO::INPUT;
+    setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
+    setWord32(GPIO_PORTC_DR,   0b00000000000000000000000000100000);
+}
+
+DIO::Direction DIOImpl::getDirection(void)
+{
+    return DIO::OUTPUT;
 }
 
 void DIOImpl::setDirection(DIO::Direction direction)
 {
 }
 
-DIO::Level DIOImpl::getLevel()
+DIO::Level DIOImpl::getLevel(void)
 {
     return DIO::HIGH;
 }

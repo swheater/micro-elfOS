@@ -8,11 +8,16 @@
 
 #define SIM_SCGC5 ((Word32*) 0x40048038)
 
-SIMImpl::SIMImpl()
+SIMImpl::SIMImpl(void)
 {
     setWord32(SIM_SCGC5, getWord32(SIM_SCGC5) | (1 << 11));
 }
 
-SIMImpl::~SIMImpl()
+SIMImpl::~SIMImpl(void)
 {
+}
+
+void SIMImpl::begin(void)
+{
+    setWord32(SIM_SCGC5, getWord32(SIM_SCGC5) | (1 << 11));
 }

@@ -10,8 +10,10 @@
 class WDTImpl
 {
 public:
-    WDTImpl();
-    ~WDTImpl();
+    WDTImpl(void);
+    ~WDTImpl(void);
+
+    static void begin(void);
 };
 
 #endif

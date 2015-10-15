@@ -47,6 +47,10 @@ app.elf app.map: app-mk20dx256.lds $(OBJS)
 	$(LD) $(LDFLAGS) -nostdlib -T app-mk20dx256.lds -o app.elf -Map app.map $(OBJS)
 	$(SIZE) $(SIZEFLAGS) app.elf
 
+# app.elf app.map: app-mkl26z64.lds $(OBJS)
+#	$(LD) $(LDFLAGS) -nostdlib -T app-mkl26z64.lds -o app.elf -Map app.map $(OBJS)
+#	$(SIZE) $(SIZEFLAGS) app.elf
+
 app.hex: app.elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) -O ihex app.elf app.hex
 

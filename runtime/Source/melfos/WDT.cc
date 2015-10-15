@@ -4,10 +4,10 @@
 
 #include <melfos/WDT.h>
 
-WDT::WDT()
+WDT::WDT(void)
 {
 }
 
-WDT::~WDT()
+WDT::~WDT(void)
 {
 }

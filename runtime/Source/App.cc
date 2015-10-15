@@ -4,27 +4,30 @@
 
 #include <App.h>
 #include <Memory.h>
+#include <melfos/mkx2x/WDTImpl.h>
 #include <melfos/mkx2x/SIMImpl.h>
 #include <melfos/mkx2x/DIOImpl.h>
 
 void setup(void)
 {
-    SIMImpl simImpl;
+	WDTImpl::begin();
+    SIMImpl::begin();
+    DIOImpl::begin();
 }
 
 void loop(void)
 {
-    DIOImpl dioImpl;
+    volatile int index;
 
-    dioImpl.setLevel(DIO::HIGH);
-    for (int index = 0; index < 500000; index++) ;
+    DIOImpl::setLevel(DIO::HIGH);
+    for (index = 0; index < 200000; index++) ;
 
-    dioImpl.setLevel(DIO::LOW);
-    for (int index = 0; index < 500000; index++) ;
+    DIOImpl::setLevel(DIO::LOW);
+    for (index = 0; index < 200000; index++) ;
 
-    dioImpl.setLevel(DIO::HIGH);
-    for (int index = 0; index < 100000; index++) ;
+    DIOImpl::setLevel(DIO::HIGH);
+    for (index = 0; index < 100000; index++) ;
 
-    dioImpl.setLevel(DIO::LOW);
-    for (int index = 0; index < 100000; index++) ;
+    DIOImpl::setLevel(DIO::LOW);
+    for (index = 0; index < 100000; index++) ;
 }

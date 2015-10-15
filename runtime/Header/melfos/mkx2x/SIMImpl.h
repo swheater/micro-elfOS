@@ -10,8 +10,10 @@
 class SIMImpl
 {
 public:
-    SIMImpl();
-    ~SIMImpl();
+    SIMImpl(void);
+    ~SIMImpl(void);
+
+    static void begin(void);
 };
 
 #endif
