@@ -7,7 +7,7 @@
 
 #include <melfos/DIO.h>
 
-class DIOImpl
+class DIOImpl: public DIO
 {
 public:
     DIOImpl(void);

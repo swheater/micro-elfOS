@@ -7,7 +7,7 @@
 
 #include <melfos/WDT.h>
 
-class WDTImpl
+class WDTImpl: public WDT
 {
 public:
     WDTImpl(void);

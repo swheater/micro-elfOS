@@ -7,7 +7,7 @@
 
 #include <melfos/SIM.h>
 
-class SIMImpl
+class SIMImpl: public SIM
 {
 public:
     SIMImpl(void);
