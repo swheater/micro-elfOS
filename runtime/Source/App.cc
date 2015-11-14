@@ -10,7 +10,7 @@
 
 void setup(void)
 {
-	WDTImpl::begin();
+    WDTImpl::begin();
     SIMImpl::begin();
     DIOImpl::begin();
 }
@@ -23,10 +23,10 @@ void loop(void)
     for (index = 0; index < 200000; index++) ;
 
     DIOImpl::setLevel(DIO::LOW);
-    for (index = 0; index < 200000; index++) ;
+    for (index = 0; index < 100000; index++) ;
 
     DIOImpl::setLevel(DIO::HIGH);
-    for (index = 0; index < 100000; index++) ;
+    for (index = 0; index < 400000; index++) ;
 
     DIOImpl::setLevel(DIO::LOW);
     for (index = 0; index < 100000; index++) ;

@@ -8,8 +8,8 @@
 class WDT
 {
 public:
-    WDT();
-    ~WDT();
+    WDT(void);
+    ~WDT(void);
 };
 
 #endif

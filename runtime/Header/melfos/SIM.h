@@ -8,8 +8,8 @@
 class SIM
 {
 public:
-    SIM();
-    ~SIM();
+    SIM(void);
+    ~SIM(void);
 };
 
 #endif

@@ -13,7 +13,7 @@ public:
     SIMImpl(void);
     ~SIMImpl(void);
 
-    static void begin(void);
+    void begin(void);
 };
 
 #endif

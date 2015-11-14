@@ -16,7 +16,7 @@ export LDFLAGS      =
 export OBJCOPY      = arm-none-eabi-objcopy
 export OBJCOPYFLAGS =
 export SIZE         = arm-none-eabi-size
-export SIZEFLAGS    = 
+export SIZEFLAGS    =
 export RM           = rm
 
 OBJS = Source/Init.o \

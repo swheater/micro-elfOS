@@ -43,7 +43,7 @@ DIO::Direction DIOImpl::getDirection(void)
 
     Word32 currentDRReg = getWord32(drRegAddress);
 
-    if (currentDRReg & (1 < _pinNumber) != 0)
+    if ((currentDRReg & (1 < _pinNumber)) != 0)
         return DIO::OUTPUT;
     else
         return DIO::INPUT;
@@ -68,8 +68,16 @@ DIO::Level DIOImpl::getLevel(void)
 void DIOImpl::setLevel(DIO::Level level)
 {
     if (level == DIO::HIGH)
-        setWord32(GPIO_PORTC_SOR, 0b00000000000000000000000000100000);
+    {
+        Word32* sorRegAddress = GPIO_SOR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+
+        setWord32(sorRegAddress, 1 < _pinNumber);
+    }
     else
-        setWord32(GPIO_PORTC_COR, 0b00000000000000000000000000100000);
+    {
+        Word32* corRegAddress = GPIO_COR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+
+        setWord32(corRegAddress, 1 < _pinNumber);
+    }
 
 }

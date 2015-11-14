@@ -13,14 +13,13 @@ public:
     DIOImpl(unsigned char portNumber, unsigned char pinNumber);
     ~DIOImpl(void);
 
-    static void begin(void);
+    void begin(void);
 
     DIO::Direction getDirection(void);
     void           setDirection(DIO::Direction direction);
 
     DIO::Level getLevel(void);
-    static void setLevel(DIO::Level level);
-
+    void setLevel(DIO::Level level);
 private:
     unsigned char _portNumber;
     unsigned char _pinNumber;

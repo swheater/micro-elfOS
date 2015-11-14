@@ -13,7 +13,7 @@ public:
     WDTImpl(void);
     ~WDTImpl(void);
 
-    static void begin(void);
+    void begin(void);
 };
 
 #endif

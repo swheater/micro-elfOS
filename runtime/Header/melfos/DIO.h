@@ -11,13 +11,13 @@ public:
     enum Direction {INPUT, OUTPUT};
     enum Level     {LOW, HIGH, UNDRIVEN};
 
-    DIO();
-    ~DIO();
+    DIO(void);
+    ~DIO(void);
 
-    Direction getDirection();
+    Direction getDirection(void);
     void      setDirection(Direction direction);
 
-    Level getLevel();
+    Level getLevel(void);
     void  setLevel(Level level);
 };
 
