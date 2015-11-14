@@ -7,17 +7,24 @@
 #include <melfos/mkx2x/DIOImpl.h>
 
 #define GPIO_PORTC_PCR5 ((Word32*) 0x4004B014)
-#define GPIO_PORTC_OR   ((Word32*) 0x400FF080)
-#define GPIO_PORTC_SOR  ((Word32*) 0x400FF084)
-#define GPIO_PORTC_COR  ((Word32*) 0x400FF088)
-#define GPIO_PORTC_TOR  ((Word32*) 0x400FF08C)
-#define GPIO_PORTC_IR   ((Word32*) 0x400FF090)
-#define GPIO_PORTC_DR   ((Word32*) 0x400FF094)
 
-DIOImpl::DIOImpl(void)
+#define GPIO_BASE_ADDR       ((Word32*) 0x400FF000)
+#define GPIO_PORT_SPACING    (0x10)
+
+#define GPIO_OR_PORT_OFFSET  (0x00)
+#define GPIO_SOR_PORT_OFFSET (0x01)
+#define GPIO_COR_PORT_OFFSET (0x02)
+#define GPIO_TOR_PORT_OFFSET (0x03)
+#define GPIO_IR_PORT_OFFSET  (0x04)
+#define GPIO_DR_PORT_OFFSET  (0x05)
+
+DIOImpl::DIOImpl(unsigned char portNumber, unsigned char pinNumber)
 {
+    _portNumber = portNumber;
+    _pinNumber  = pinNumber;
+
     setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
-    setWord32(GPIO_PORTC_DR,   0b00000000000000000000000000100000);
+    setDirection(DIO::INPUT);
 }
 
 DIOImpl::~DIOImpl(void)
@@ -27,16 +34,30 @@ DIOImpl::~DIOImpl(void)
 void DIOImpl::begin(void)
 {
     setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
-    setWord32(GPIO_PORTC_DR,   0b00000000000000000000000000100000);
+    setDirection(DIO::INPUT);
 }
 
 DIO::Direction DIOImpl::getDirection(void)
 {
-    return DIO::OUTPUT;
+    Word32* drRegAddress = GPIO_DR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+
+    Word32 currentDRReg = getWord32(drRegAddress);
+
+    if (currentDRReg & (1 < _pinNumber) != 0)
+        return DIO::OUTPUT;
+    else
+        return DIO::INPUT;
 }
 
 void DIOImpl::setDirection(DIO::Direction direction)
 {
+    Word32* drRegAddress = GPIO_DR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+
+    Word32 currentDRReg = getWord32(drRegAddress);
+    if (direction == DIO::OUTPUT)
+        setWord32(drRegAddress, currentDRReg | (1 < _pinNumber));
+    else
+        setWord32(drRegAddress, currentDRReg & (~ (1 < _pinNumber)));
 }
 
 DIO::Level DIOImpl::getLevel(void)

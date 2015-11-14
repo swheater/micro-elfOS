@@ -10,7 +10,7 @@
 class DIOImpl: public DIO
 {
 public:
-    DIOImpl(void);
+    DIOImpl(unsigned char portNumber, unsigned char pinNumber);
     ~DIOImpl(void);
 
     static void begin(void);
@@ -20,6 +20,10 @@ public:
 
     DIO::Level getLevel(void);
     static void setLevel(DIO::Level level);
+
+private:
+    unsigned char _portNumber;
+    unsigned char _pinNumber;
 };
 
 #endif
