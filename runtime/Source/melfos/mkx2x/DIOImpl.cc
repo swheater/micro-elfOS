@@ -79,5 +79,4 @@ void DIOImpl::setLevel(DIO::Level level)
 
         setWord32(corRegAddress, 1 < _pinNumber);
     }
-
 }

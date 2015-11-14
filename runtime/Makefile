@@ -24,6 +24,8 @@ OBJS = Source/Init.o \
        Source/App.o \
        Source/Memory.o \
        \
+       Source/aeabi/AEABI.o \
+       \
        Source/melfos/DIO.o \
        Source/melfos/SIM.o \
        Source/melfos/WDT.o \

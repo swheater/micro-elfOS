@@ -8,26 +8,32 @@
 #include <melfos/mkx2x/SIMImpl.h>
 #include <melfos/mkx2x/DIOImpl.h>
 
+WDTImpl wdt;
+SIMImpl sim;
+DIOImpl dio(2, 5);
+
 void setup(void)
 {
-    WDTImpl::begin();
-    SIMImpl::begin();
-    DIOImpl::begin();
+	wdt.begin();
+	sim.begin();
+	dio.begin();
+
+	dio.setDirection(DIO::OUTPUT);
 }
 
 void loop(void)
 {
     volatile int index;
 
-    DIOImpl::setLevel(DIO::HIGH);
+    dio.setLevel(DIO::HIGH);
     for (index = 0; index < 200000; index++) ;
 
-    DIOImpl::setLevel(DIO::LOW);
+    dio.setLevel(DIO::LOW);
     for (index = 0; index < 100000; index++) ;
 
-    DIOImpl::setLevel(DIO::HIGH);
+    dio.setLevel(DIO::HIGH);
     for (index = 0; index < 400000; index++) ;
 
-    DIOImpl::setLevel(DIO::LOW);
+    dio.setLevel(DIO::LOW);
     for (index = 0; index < 100000; index++) ;
 }
