@@ -4,8 +4,8 @@
 
 export MAKE         = make
 export C++C         = arm-none-eabi-gcc
-# export C++CFLAGS    = -Wall -fno-rtti -fno-exceptions -O -mcpu=cortex-m0plus -mthumb -IHeader
-export C++CFLAGS    = -Wall -fno-rtti -fno-exceptions -O -mcpu=cortex-m4 -mthumb -IHeader
+# export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m0plus -mthumb -IHeader
+export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m4 -mthumb -IHeader
 export CC           = arm-none-eabi-gcc
 # export CCFLAGS      = -Wall -O -mcpu=cortex-m0plus -mthumb -IHeader
 export CCFLAGS      = -Wall -O -mcpu=cortex-m4 -mthumb -IHeader
