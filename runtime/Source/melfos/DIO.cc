@@ -4,10 +4,10 @@
 
 #include <melfos/DIO.h>
 
-DIO::DIO()
+DIO::DIO(void)
 {
 }
 
-DIO::~DIO()
+DIO::~DIO(void)
 {
 }

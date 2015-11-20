@@ -4,10 +4,10 @@
 
 #include <melfos/SIM.h>
 
-SIM::SIM()
+SIM::SIM(void)
 {
 }
 
-SIM::~SIM()
+SIM::~SIM(void)
 {
 }
