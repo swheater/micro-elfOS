@@ -22,9 +22,6 @@ DIOImpl::DIOImpl(unsigned char portNumber, unsigned char pinNumber)
 {
     _portNumber = portNumber;
     _pinNumber  = pinNumber;
-
-    setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
-    setDirection(DIO::INPUT);
 }
 
 DIOImpl::~DIOImpl(void)
@@ -43,7 +40,7 @@ DIO::Direction DIOImpl::getDirection(void)
 
     Word32 currentDRReg = getWord32(drRegAddress);
 
-    if ((currentDRReg & (1 < _pinNumber)) != 0)
+    if ((currentDRReg & (1 << _pinNumber)) != 0)
         return DIO::OUTPUT;
     else
         return DIO::INPUT;
@@ -55,9 +52,9 @@ void DIOImpl::setDirection(DIO::Direction direction)
 
     Word32 currentDRReg = getWord32(drRegAddress);
     if (direction == DIO::OUTPUT)
-        setWord32(drRegAddress, currentDRReg | (1 < _pinNumber));
+        setWord32(drRegAddress, currentDRReg | (1 << _pinNumber));
     else
-        setWord32(drRegAddress, currentDRReg & (~ (1 < _pinNumber)));
+        setWord32(drRegAddress, currentDRReg & (~ (1 << _pinNumber)));
 }
 
 DIO::Level DIOImpl::getLevel(void)
@@ -71,12 +68,12 @@ void DIOImpl::setLevel(DIO::Level level)
     {
         Word32* sorRegAddress = GPIO_SOR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-        setWord32(sorRegAddress, 1 < _pinNumber);
+        setWord32(sorRegAddress, 1 << _pinNumber);
     }
     else
     {
         Word32* corRegAddress = GPIO_COR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-        setWord32(corRegAddress, 1 < _pinNumber);
+        setWord32(corRegAddress, 1 << _pinNumber);
     }
 }
