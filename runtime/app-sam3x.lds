@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) 2015, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
+ */
+
+MEMORY
+{
+	flash (rx)  : ORIGIN = 0x00000000, LENGTH = 256K
+	ram   (rwx) : ORIGIN = 0x20000000, LENGTH = 96K
+}
+
+SECTIONS
+{
+	.text :
+	{
+		* (.text);
+	} > flash
+	.rodata :
+	{
+		* (.rodata);
+	} > flash
+	.data :
+	{
+		* (.data);
+	} > ram
+	.bss :
+	{
+		* (.bss);
+	} > ram
+}
