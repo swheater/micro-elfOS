@@ -4,11 +4,13 @@
 
 export MAKE         = make
 export C++C         = arm-none-eabi-gcc
-# export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m0plus -mthumb -IHeader
-export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m4 -mthumb -IHeader
+export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m0plus -mthumb -IHeader
+# export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m3 -mthumb -IHeader
+# export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m4 -mthumb -IHeader
 export CC           = arm-none-eabi-gcc
-# export CCFLAGS      = -Wall -O -mcpu=cortex-m0plus -mthumb -IHeader
-export CCFLAGS      = -Wall -O -mcpu=cortex-m4 -mthumb -IHeader
+export CCFLAGS      = -Wall -O -mcpu=cortex-m0plus -mthumb -IHeader
+# export CCFLAGS      = -Wall -O -mcpu=cortex-m3 -mthumb -IHeader
+# export CCFLAGS      = -Wall -O -mcpu=cortex-m4 -mthumb -IHeader
 export AS           = arm-none-eabi-as
 export ASFLAGS      = -mthumb
 export LD           = arm-none-eabi-ld
@@ -34,6 +36,10 @@ OBJS = Source/Init.o \
        Source/melfos/mkx2x/SIMImpl.o \
        Source/melfos/mkx2x/WDTImpl.o
 
+#       Source/melfos/sam3x/DIOImpl.o \
+#       Source/melfos/sam3x/SIMImpl.o \
+#       Source/melfos/sam3x/WDTImpl.o
+
 all: app.hex
 
 .s.o:
@@ -45,12 +51,16 @@ all: app.hex
 .cc.o:
 	$(C++C) $(C++CFLAGS) -o $@ -c $<
 
-app.elf app.map: app-mk20dx256.lds $(OBJS)
-	$(LD) $(LDFLAGS) -nostdlib -T app-mk20dx256.lds -o app.elf -Map app.map $(OBJS)
-	$(SIZE) $(SIZEFLAGS) app.elf
-
 # app.elf app.map: app-mkl26z64.lds $(OBJS)
 #	$(LD) $(LDFLAGS) -nostdlib -T app-mkl26z64.lds -o app.elf -Map app.map $(OBJS)
+#	$(SIZE) $(SIZEFLAGS) app.elf
+
+app.elf app.map: app-sam3x8e.lds $(OBJS)
+	$(LD) $(LDFLAGS) -nostdlib -T app-sam3x8e.lds -o app.elf -Map app.map $(OBJS)
+	$(SIZE) $(SIZEFLAGS) app.elf
+
+# app.elf app.map: app-mk20dx256.lds $(OBJS)
+# 	$(LD) $(LDFLAGS) -nostdlib -T app-mk20dx256.lds -o app.elf -Map app.map $(OBJS)
 #	$(SIZE) $(SIZEFLAGS) app.elf
 
 app.hex: app.elf

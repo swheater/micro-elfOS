@@ -4,7 +4,7 @@
 
 #include <aeabi/AEABI.h>
 
-void *__dso_handle = 0;
+void *__dso_handle;
 
 int __aeabi_atexit(void* object, void (*destroyer)(void*), void* dso_handle)
 {
