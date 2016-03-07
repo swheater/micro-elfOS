@@ -2,7 +2,7 @@
 #define __MELFOS_DIO_H__
 
 /*
- * Copyright (c) 2015, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
+ * Copyright (c) 2015-2016, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
  */
 
 class DIO

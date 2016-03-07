@@ -1,25 +1,16 @@
 #
-# Copyright (c) 2015, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
+# Copyright (c) 2015-2016, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
 #
 
-export MAKE         = make
-export C++C         = arm-none-eabi-gcc
-export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m0plus -mthumb -IHeader
-# export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m3 -mthumb -IHeader
-# export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m4 -mthumb -IHeader
-export CC           = arm-none-eabi-gcc
-export CCFLAGS      = -Wall -O -mcpu=cortex-m0plus -mthumb -IHeader
-# export CCFLAGS      = -Wall -O -mcpu=cortex-m3 -mthumb -IHeader
-# export CCFLAGS      = -Wall -O -mcpu=cortex-m4 -mthumb -IHeader
-export AS           = arm-none-eabi-as
-export ASFLAGS      = -mthumb
-export LD           = arm-none-eabi-ld
-export LDFLAGS      =
-export OBJCOPY      = arm-none-eabi-objcopy
-export OBJCOPYFLAGS =
-export SIZE         = arm-none-eabi-size
-export SIZEFLAGS    =
-export RM           = rm
+
+export MAKE = make
+export RM   = rm
+
+include config.mk
+
+include mk/arch-$(ARCH).mk
+include mk/family-$(FAMILY).mk
+include mk/device-$(DEVICE).mk
 
 OBJS = Source/Init.o \
        \
@@ -32,13 +23,9 @@ OBJS = Source/Init.o \
        Source/melfos/SIM.o \
        Source/melfos/WDT.o \
        \
-       Source/melfos/mkx2x/DIOImpl.o \
-       Source/melfos/mkx2x/SIMImpl.o \
-       Source/melfos/mkx2x/WDTImpl.o
-
-#       Source/melfos/sam3x/DIOImpl.o \
-#       Source/melfos/sam3x/SIMImpl.o \
-#       Source/melfos/sam3x/WDTImpl.o
+       Source/melfos/$(FAMILY)/DIOImpl.o \
+       Source/melfos/$(FAMILY)/SIMImpl.o \
+       Source/melfos/$(FAMILY)/WDTImpl.o
 
 all: app.hex
 
@@ -51,17 +38,9 @@ all: app.hex
 .cc.o:
 	$(C++C) $(C++CFLAGS) -o $@ -c $<
 
-# app.elf app.map: app-mkl26z64.lds $(OBJS)
-#	$(LD) $(LDFLAGS) -nostdlib -T app-mkl26z64.lds -o app.elf -Map app.map $(OBJS)
-#	$(SIZE) $(SIZEFLAGS) app.elf
-
-app.elf app.map: app-sam3x8e.lds $(OBJS)
-	$(LD) $(LDFLAGS) -nostdlib -T app-sam3x8e.lds -o app.elf -Map app.map $(OBJS)
+app.elf app.map: lds/app-$(DEVICE).lds $(OBJS)
+	$(LD) $(LDFLAGS) -nostdlib -T lds/app-$(DEVICE).lds -o app.elf -Map app.map $(OBJS)
 	$(SIZE) $(SIZEFLAGS) app.elf
-
-# app.elf app.map: app-mk20dx256.lds $(OBJS)
-# 	$(LD) $(LDFLAGS) -nostdlib -T app-mk20dx256.lds -o app.elf -Map app.map $(OBJS)
-#	$(SIZE) $(SIZEFLAGS) app.elf
 
 app.hex: app.elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) -O ihex app.elf app.hex
