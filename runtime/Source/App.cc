@@ -24,7 +24,7 @@ void loop(void)
 {
 	DIOImpl dio(2, 5);
 
-	volatile int index;
+	volatile long index;
 
     dio.setLevel(DIO::HIGH);
     for (index = 0; index < 600000; index++) ;
