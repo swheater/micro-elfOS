@@ -5,7 +5,6 @@
 all:
 
 clean:
-	$(MAKE) -C init clean
-	$(MAKE) -C aeabi clean
-	$(MAKE) -C melfos clean
+	$(MAKE) -C mkx2x clean
+	$(MAKE) -C atmega clean
 	$(RM) -f *~ *.o

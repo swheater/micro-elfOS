@@ -12,7 +12,7 @@ include mk/arch-$(ARCH).mk
 include mk/family-$(FAMILY).mk
 include mk/device-$(DEVICE).mk
 
-OBJS = Source/Init.o \
+OBJS = Source/init/$(FAMILY)/Init.o \
        \
        Source/App.o \
        Source/Memory.o \

@@ -5,7 +5,4 @@
 all:
 
 clean:
-	$(MAKE) -C init clean
-	$(MAKE) -C aeabi clean
-	$(MAKE) -C melfos clean
 	$(RM) -f *~ *.o
