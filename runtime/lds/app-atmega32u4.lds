@@ -5,7 +5,7 @@
 MEMORY
 {
 	flash (rx)  : ORIGIN = 0x0000, LENGTH = 32K
-	ram   (rwx) : ORIGIN = 0x0100, LENGTH = 2.5K
+	ram   (rwx) : ORIGIN = 0x0100, LENGTH = 2560
 }
 
 SECTIONS
