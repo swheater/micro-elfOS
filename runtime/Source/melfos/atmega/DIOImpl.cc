@@ -6,17 +6,12 @@
 #include <melfos/DIO.h>
 #include <melfos/atmega/DIOImpl.h>
 
-#define GPIO_PORTC_PCR5 ((Word32*) 0x4004B014)
+#define GPIO_BASE_ADDR    ((Word8*) 0x20)
+#define GPIO_PORT_SPACING (0x03)
 
-#define GPIO_BASE_ADDR       ((Word32*) 0x400FF000)
-#define GPIO_PORT_SPACING    (0x10)
-
-#define GPIO_OR_PORT_OFFSET  (0x00)
-#define GPIO_SOR_PORT_OFFSET (0x01)
-#define GPIO_COR_PORT_OFFSET (0x02)
-#define GPIO_TOR_PORT_OFFSET (0x03)
-#define GPIO_IR_PORT_OFFSET  (0x04)
-#define GPIO_DR_PORT_OFFSET  (0x05)
+#define GPIO_PIN_PORT_OFFSET  (0x00)
+#define GPIO_DDR_PORT_OFFSET  (0x01)
+#define GPIO_PORT_PORT_OFFSET (0x02)
 
 DIOImpl::DIOImpl(unsigned char portNumber, unsigned char pinNumber)
 {
@@ -30,15 +25,14 @@ DIOImpl::~DIOImpl(void)
 
 void DIOImpl::begin(void)
 {
-    setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
     setDirection(DIO::INPUT);
 }
 
 DIO::Direction DIOImpl::getDirection(void)
 {
-    Word32* drRegAddress = GPIO_DR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+    Word8* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-    Word32 currentDRReg = getWord32(drRegAddress);
+    Word8 currentDRReg = getWord8(drRegAddress);
 
     if ((currentDRReg & (1 << _pinNumber)) != 0)
         return DIO::OUTPUT;
@@ -48,13 +42,13 @@ DIO::Direction DIOImpl::getDirection(void)
 
 void DIOImpl::setDirection(DIO::Direction direction)
 {
-    Word32* drRegAddress = GPIO_DR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+    Word8* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-    Word32 currentDRReg = getWord32(drRegAddress);
+    Word8 currentDRReg = getWord8(drRegAddress);
     if (direction == DIO::OUTPUT)
-        setWord32(drRegAddress, currentDRReg | (1 << _pinNumber));
+        setWord8(drRegAddress, currentDRReg | (1 << _pinNumber));
     else
-        setWord32(drRegAddress, currentDRReg & (~ (1 << _pinNumber)));
+    	setWord8(drRegAddress, currentDRReg & (~ (1 << _pinNumber)));
 }
 
 DIO::Level DIOImpl::getLevel(void)
@@ -64,16 +58,11 @@ DIO::Level DIOImpl::getLevel(void)
 
 void DIOImpl::setLevel(DIO::Level level)
 {
+    Word8* portRegAddress = GPIO_PORT_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+
+    Word8 currentPortReg = getWord8(portRegAddress);
     if (level == DIO::HIGH)
-    {
-        Word32* sorRegAddress = GPIO_SOR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
-
-        setWord32(sorRegAddress, 1 << _pinNumber);
-    }
+        setWord8(portRegAddress, currentPortReg | (1 << _pinNumber));
     else
-    {
-        Word32* corRegAddress = GPIO_COR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
-
-        setWord32(corRegAddress, 1 << _pinNumber);
-    }
+    	setWord8(portRegAddress, currentPortReg & (~ (1 << _pinNumber)));
 }
