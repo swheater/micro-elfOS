@@ -13,4 +13,5 @@ export DEVICE = mk20dx256
 # export DEVICE = mkl26z64
 # export DEVICE = sam3x8e
 # export DEVICE = stm32f411re
+# export DEVICE = atmega328p
 # export DEVICE = atmega32u4
