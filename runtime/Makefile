@@ -3,8 +3,10 @@
 #
 
 
-export MAKE = make
-export RM   = rm
+export MAKE      = make
+export MAKEFLAGS = 
+export RM        = rm
+export RMFLAGS   = -f
 
 include config.mk
 
@@ -46,6 +48,6 @@ app.hex: app.elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) -O ihex app.elf app.hex
 
 clean:
-	$(MAKE) -C Header clean
-	$(MAKE) -C Source clean
-	$(RM) -f *~ *.elf *.hex *.map
+	$(MAKE) $(MAKEFLAGS) -C Header clean
+	$(MAKE) $(MAKEFLAGS) -C Source clean
+	$(RM) $(RMFLAGS) *~ *.elf *.hex *.map
