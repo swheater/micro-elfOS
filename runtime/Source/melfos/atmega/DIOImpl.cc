@@ -6,7 +6,7 @@
 #include <melfos/DIO.h>
 #include <melfos/atmega/DIOImpl.h>
 
-#define GPIO_BASE_ADDR    ((Word8*) 0x20)
+#define GPIO_BASE_ADDR    ((Byte*) 0x20)
 #define GPIO_PORT_SPACING (0x03)
 
 #define GPIO_PIN_PORT_OFFSET  (0x00)
@@ -30,9 +30,9 @@ void DIOImpl::begin(void)
 
 DIO::Direction DIOImpl::getDirection(void)
 {
-    Word8* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+	Byte* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-    Word8 currentDRReg = getWord8(drRegAddress);
+	Byte currentDRReg = getByte(drRegAddress);
 
     if ((currentDRReg & (1 << _pinNumber)) != 0)
         return DIO::OUTPUT;
@@ -42,13 +42,13 @@ DIO::Direction DIOImpl::getDirection(void)
 
 void DIOImpl::setDirection(DIO::Direction direction)
 {
-    Word8* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+	Byte* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-    Word8 currentDRReg = getWord8(drRegAddress);
+	Byte currentDRReg = getByte(drRegAddress);
     if (direction == DIO::OUTPUT)
-        setWord8(drRegAddress, currentDRReg | (1 << _pinNumber));
+        setByte(drRegAddress, currentDRReg | (1 << _pinNumber));
     else
-    	setWord8(drRegAddress, currentDRReg & (~ (1 << _pinNumber)));
+    	setByte(drRegAddress, currentDRReg & (~ (1 << _pinNumber)));
 }
 
 DIO::Level DIOImpl::getLevel(void)
@@ -58,11 +58,11 @@ DIO::Level DIOImpl::getLevel(void)
 
 void DIOImpl::setLevel(DIO::Level level)
 {
-    Word8* portRegAddress = GPIO_PORT_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+	Byte* portRegAddress = GPIO_PORT_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-    Word8 currentPortReg = getWord8(portRegAddress);
+	Byte currentPortReg = getByte(portRegAddress);
     if (level == DIO::HIGH)
-        setWord8(portRegAddress, currentPortReg | (1 << _pinNumber));
+        setByte(portRegAddress, currentPortReg | (1 << _pinNumber));
     else
-    	setWord8(portRegAddress, currentPortReg & (~ (1 << _pinNumber)));
+    	setByte(portRegAddress, currentPortReg & (~ (1 << _pinNumber)));
 }
