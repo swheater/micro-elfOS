@@ -49,7 +49,7 @@
         RJMP    _dummy          /* TIMER4_COMPARE_D */
         RJMP    _dummy          /* TIMER4_OVERFLOW */
         RJMP    _dummy          /* TIMER4_FAULT_PROTECTION */
-	
+
 	.equ	SPL_IOADDR,	0x3D
 	.equ	SPH_IOADDR,	0x3E
 	.equ	RAMEND,		0x0AFF
