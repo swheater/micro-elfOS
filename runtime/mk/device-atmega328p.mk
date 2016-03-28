@@ -3,7 +3,7 @@
 #
 
 export C++C         = avr-gcc
-export C++CFLAGS    = -Wall -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mmcu=atmega328p -IHeader
+export C++CFLAGS    = -Wall -O -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mmcu=atmega328p -IHeader
 export CC           = avr-gcc
 export CCFLAGS      = -Wall -O -mmcu=atmega328p -IHeader
 export AS           = avr-as
