@@ -30,9 +30,9 @@ void DIOImpl::begin(void)
 
 DIO::Direction DIOImpl::getDirection(void)
 {
-	Byte* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+    Byte* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-	Byte currentDRReg = getByte(drRegAddress);
+    Byte currentDRReg = getByte(drRegAddress);
 
     if ((currentDRReg & (1 << _pinNumber)) != 0)
         return DIO::OUTPUT;
@@ -42,27 +42,33 @@ DIO::Direction DIOImpl::getDirection(void)
 
 void DIOImpl::setDirection(DIO::Direction direction)
 {
-	Byte* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+    Byte* drRegAddress = GPIO_DDR_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-	Byte currentDRReg = getByte(drRegAddress);
+    Byte currentDRReg = getByte(drRegAddress);
     if (direction == DIO::OUTPUT)
         setByte(drRegAddress, currentDRReg | (1 << _pinNumber));
     else
-    	setByte(drRegAddress, currentDRReg & (~ (1 << _pinNumber)));
+        setByte(drRegAddress, currentDRReg & (~ (1 << _pinNumber)));
 }
 
 DIO::Level DIOImpl::getLevel(void)
 {
-    return DIO::HIGH;
+    Byte* portRegAddress = GPIO_PORT_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+
+    Byte currentPortReg = getByte(portRegAddress);
+    if ((currentPortReg & (1 << _pinNumber)) != 0)
+        return DIO::HIGH;
+    else
+        return DIO::LOW;
 }
 
 void DIOImpl::setLevel(DIO::Level level)
 {
-	Byte* portRegAddress = GPIO_PORT_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
+    Byte* portRegAddress = GPIO_PORT_PORT_OFFSET + (_portNumber * GPIO_PORT_SPACING) + GPIO_BASE_ADDR;
 
-	Byte currentPortReg = getByte(portRegAddress);
+    Byte currentPortReg = getByte(portRegAddress);
     if (level == DIO::HIGH)
         setByte(portRegAddress, currentPortReg | (1 << _pinNumber));
     else
-    	setByte(portRegAddress, currentPortReg & (~ (1 << _pinNumber)));
+        setByte(portRegAddress, currentPortReg & (~ (1 << _pinNumber)));
 }
