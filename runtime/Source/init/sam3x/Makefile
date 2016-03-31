@@ -5,7 +5,4 @@
 all:
 
 clean:
-	$(MAKE) -C mkx2x clean
-	$(MAKE) -C sam3x clean
-	$(MAKE) -C atmega clean
 	$(RM) -f *~ *.o
