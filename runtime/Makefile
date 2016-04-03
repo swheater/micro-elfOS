@@ -48,6 +48,8 @@ app.hex: app.elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) -O ihex app.elf app.hex
 
 clean:
+	$(MAKE) $(MAKEFLAGS) -C mk clean
+	$(MAKE) $(MAKEFLAGS) -C lds clean
 	$(MAKE) $(MAKEFLAGS) -C Header clean
 	$(MAKE) $(MAKEFLAGS) -C Source clean
 	$(RM) $(RMFLAGS) *~ *.elf *.hex *.map
