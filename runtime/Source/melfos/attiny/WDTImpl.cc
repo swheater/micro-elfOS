@@ -4,7 +4,7 @@
 
 #include <Memory.h>
 #include <melfos/WDT.h>
-#include <melfos/atmega/WDTImpl.h>
+#include <melfos/attiny/WDTImpl.h>
 
 WDTImpl::WDTImpl(void)
 {

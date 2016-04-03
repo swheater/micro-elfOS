@@ -4,7 +4,7 @@
 
 #include <Memory.h>
 #include <melfos/SIM.h>
-#include <melfos/atmega/SIMImpl.h>
+#include <melfos/attiny/SIMImpl.h>
 
 SIMImpl::SIMImpl(void)
 {
