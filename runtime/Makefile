@@ -2,11 +2,9 @@
 # Copyright (c) 2015-2016, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
 #
 
-
-export MAKE      = make
-export MAKEFLAGS = 
-export RM        = rm
-export RMFLAGS   = -f
+export MAKE    = make
+export RM      = rm
+export RMFLAGS = -f
 
 include config.mk
 
@@ -48,8 +46,8 @@ app.hex: app.elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) -O ihex app.elf app.hex
 
 clean:
-	$(MAKE) $(MAKEFLAGS) -C mk clean
-	$(MAKE) $(MAKEFLAGS) -C lds clean
-	$(MAKE) $(MAKEFLAGS) -C Header clean
-	$(MAKE) $(MAKEFLAGS) -C Source clean
-	$(RM) $(RMFLAGS) *~ *.elf *.hex *.map
+	$(MAKE) -C mk clean
+	$(MAKE) -C lds clean
+	$(MAKE) -C Header clean
+	$(MAKE) -C Source clean
+	$(RM) $(RMFLAGS) *.elf *.hex *.map

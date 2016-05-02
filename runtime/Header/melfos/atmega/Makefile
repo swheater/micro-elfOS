@@ -3,4 +3,4 @@
 #
 
 clean:
-	$(RM) -f *~
+	$(RM) $(RMFLAGS) *~

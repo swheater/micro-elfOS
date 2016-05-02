@@ -2,13 +2,13 @@
 # Copyright (c) 2015-2016, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
 #
 
-ARCH = arm
-# ARCH = avr
+export ARCH = arm
+# export ARCH = avr
 
-FAMILY = mkx2x
-# FAMILY = sam3x
-# FAMILY = atmega
-# FAMILY = attiny
+export FAMILY = mkx2x
+# export FAMILY = sam3x
+# export FAMILY = atmega
+# export FAMILY = attiny
 
 export DEVICE = mk20dx256
 # export DEVICE = mkl26z64

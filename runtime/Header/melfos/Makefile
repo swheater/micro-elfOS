@@ -7,4 +7,4 @@ clean:
 	$(MAKE) -C sam3x clean
 	$(MAKE) -C atmega clean
 	$(MAKE) -C attiny clean
-	$(RM) -f *~
+	$(RM) $(RMFLAGS) *~

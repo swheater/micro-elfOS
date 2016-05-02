@@ -5,4 +5,4 @@
 clean:
 	$(MAKE) -C aeabi clean
 	$(MAKE) -C melfos clean
-	$(RM) -f *~
+	$(RM) $(RMFLAGS) *~
