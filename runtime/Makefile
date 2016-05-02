@@ -25,7 +25,10 @@ OBJS = Source/init/$(FAMILY)/Init.o \
        \
        Source/melfos/$(FAMILY)/DIOImpl.o \
        Source/melfos/$(FAMILY)/SIMImpl.o \
-       Source/melfos/$(FAMILY)/WDTImpl.o
+       Source/melfos/$(FAMILY)/WDTImpl.o \
+       \
+       Source/melfos/D_$(FAMILY).o \
+       Source/melfos/DImpl_$(FAMILY).o
 
 all: app.hex
 
