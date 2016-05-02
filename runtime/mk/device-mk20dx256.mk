@@ -3,9 +3,9 @@
 #
 
 export C++C         = arm-none-eabi-gcc
-export C++CFLAGS    = -Wall -O -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m3 -mthumb -IHeader
+export C++CFLAGS    = -Wall -O -Wextra -ffreestanding -fno-rtti -fno-exceptions -O -mcpu=cortex-m4 -mthumb -IHeader
 export CC           = arm-none-eabi-gcc
-export CCFLAGS      = -Wall -O -mcpu=cortex-m3 -mthumb -IHeader
+export CCFLAGS      = -Wall -O -mcpu=cortex-m4 -mthumb -IHeader
 export AS           = arm-none-eabi-as
 export ASFLAGS      = -mthumb
 export LD           = arm-none-eabi-ld
