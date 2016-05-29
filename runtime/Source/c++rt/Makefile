@@ -3,8 +3,4 @@
 #
 
 clean:
-	$(MAKE) -C init clean
-	$(MAKE) -C aeabi clean
-	$(MAKE) -C c++rt clean
-	$(MAKE) -C melfos clean
 	$(RM) $(RMFLAGS) *~ *.o
