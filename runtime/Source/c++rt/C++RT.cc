@@ -8,3 +8,8 @@ void __cxa_pure_virtual(void)
 {
     while (1);
 }
+
+void operator delete(void* ptr)
+{
+    while (1);
+}

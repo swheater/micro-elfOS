@@ -3,3 +3,5 @@
  */
 
 extern "C" void __cxa_pure_virtual(void);
+
+extern void operator delete(void* ptr);
