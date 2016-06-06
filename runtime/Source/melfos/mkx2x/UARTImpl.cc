@@ -27,7 +27,7 @@ UARTImpl::~UARTImpl(void)
 
 char UARTImpl::read(void)
 {
-	return 0;
+    return 0;
 }
 
 void UARTImpl::write(char value)
