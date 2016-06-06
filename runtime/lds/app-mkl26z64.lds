@@ -18,6 +18,10 @@ SECTIONS
 	{
 		* (.rodata);
 	} > flash
+	.init_array :
+	{
+		* (.init_array);
+	} > flash
 	.data :
 	{
 		* (.data);

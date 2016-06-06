@@ -6,7 +6,7 @@
 #include <melfos/D.h>
 #include <melfos/DImpl.h>
 
-// DImpl dImpl;
+DImpl dImpl;
 
 D::D(void)
 {
@@ -18,7 +18,5 @@ D::~D(void)
 
 D& D::instance(void)
 {
-    DImpl dImpl;
-
     return dImpl;
 }
