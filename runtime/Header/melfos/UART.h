@@ -9,7 +9,7 @@ class UART
 {
 public:
     UART(void);
-    ~UART(void);
+    virtual ~UART(void);
 
     virtual char read(void) = 0;
     virtual void write(char value) = 0;

@@ -12,7 +12,7 @@ public:
     enum Level     {LOW, HIGH, UNDRIVEN};
 
     DIO(void);
-    ~DIO(void);
+    virtual ~DIO(void);
 
     Direction getDirection(void);
     void      setDirection(Direction direction);

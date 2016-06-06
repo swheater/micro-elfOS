@@ -9,7 +9,7 @@ class SIM
 {
 public:
     SIM(void);
-    ~SIM(void);
+    virtual ~SIM(void);
 };
 
 #endif

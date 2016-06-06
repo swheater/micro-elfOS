@@ -12,14 +12,12 @@ class DImpl: public D
 {
 public:
     DImpl(void);
-    ~DImpl(void);
+    virtual ~DImpl(void);
 
-    DIO& pin0(void);
-    DIO& pin1(void);
-    DIO& pin2(void);
-    DIO& pin3(void);
+    DIO& ledPin(void);
 
 private:
+    DIOImpl _ledPin;
 };
 
 #endif

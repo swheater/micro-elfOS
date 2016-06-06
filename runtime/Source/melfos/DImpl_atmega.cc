@@ -9,12 +9,15 @@
 #include <melfos/SIMImpl.h>
 #include <melfos/DIOImpl.h>
 
-DImpl dImpl;
-
 DImpl::DImpl(void)
 {
 }
 
 DImpl::~DImpl(void)
 {
+}
+
+DIO& DImpl::ledPin(void)
+{
+    return _ledPin;
 }

@@ -11,7 +11,7 @@ class DIOImpl: public DIO
 {
 public:
     DIOImpl(unsigned char portNumber, unsigned char pinNumber);
-    ~DIOImpl(void);
+    virtual ~DIOImpl(void);
 
     void begin(void);
 

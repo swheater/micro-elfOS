@@ -11,7 +11,7 @@ class UARTImpl: public UART
 {
 public:
     UARTImpl(unsigned char uartNumber);
-    ~UARTImpl(void);
+    virtual ~UARTImpl(void);
 
     char read(void);
     void write(char value);

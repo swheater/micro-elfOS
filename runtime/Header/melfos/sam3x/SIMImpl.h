@@ -11,7 +11,7 @@ class SIMImpl: public SIM
 {
 public:
     SIMImpl(void);
-    ~SIMImpl(void);
+    virtual ~SIMImpl(void);
 
     void begin(void);
 };

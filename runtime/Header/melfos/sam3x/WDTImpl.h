@@ -11,7 +11,7 @@ class WDTImpl: public WDT
 {
 public:
     WDTImpl(void);
-    ~WDTImpl(void);
+    virtual ~WDTImpl(void);
 
     void begin(void);
 };

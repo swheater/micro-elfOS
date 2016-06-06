@@ -11,7 +11,9 @@ class D
 {
 public:
     D(void);
-    ~D(void);
+    virtual ~D(void);
+
+    virtual DIO& ledPin(void) = 0;
 
     static D& instance(void);
 private:

@@ -9,7 +9,7 @@ class WDT
 {
 public:
     WDT(void);
-    ~WDT(void);
+    virtual ~WDT(void);
 };
 
 #endif
