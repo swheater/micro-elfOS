@@ -4,6 +4,10 @@
 
 #include <c++rt/C++RT.h>
 
+void init(void)
+{
+}
+
 void __cxa_pure_virtual(void)
 {
     while (1);

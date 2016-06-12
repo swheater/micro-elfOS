@@ -14,11 +14,13 @@ public:
     DIO(void);
     virtual ~DIO(void);
 
-    Direction getDirection(void);
-    void      setDirection(Direction direction);
+    virtual void begin(void) = 0;
 
-    Level getLevel(void);
-    void  setLevel(Level level);
+    virtual Direction getDirection(void) = 0;
+    virtual void      setDirection(Direction direction) = 0;
+
+    virtual Level getLevel(void) = 0;
+    virtual void  setLevel(Level level) = 0;
 };
 
 #endif

@@ -19,7 +19,7 @@ public:
     void           setDirection(DIO::Direction direction);
 
     DIO::Level getLevel(void);
-    void setLevel(DIO::Level level);
+    void       setLevel(DIO::Level level);
 private:
     unsigned char _portNumber;
     unsigned char _pinNumber;

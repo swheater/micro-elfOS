@@ -9,6 +9,11 @@
 #include <melfos/mkx2x/SIMImpl.h>
 #include <melfos/mkx2x/DIOImpl.h>
 
+// DIOImpl dio(1, 5);  // Pro Trinket
+// DIOImpl dio(1, 1);  // Trinket
+// DIOImpl dio(2, 5);  // Teensy 3.X/LC
+// DIOImpl dio(1, 27); // Arduino Due
+
 DImpl::DImpl(void) : _ledPin(2, 5)
 {
 }

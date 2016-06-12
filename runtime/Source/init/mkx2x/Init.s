@@ -27,6 +27,7 @@
 
 	.thumb_func
 _start:
+	BL	init
 	BL	setup
 _label:
 	BL	loop

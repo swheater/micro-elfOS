@@ -8,6 +8,9 @@ MEMORY
 	ram   (rwx) : ORIGIN = 0x1FFFF800, LENGTH = 8K
 }
 
+EXTERN(init_array_start)
+EXTERN(init_array_end)
+
 SECTIONS
 {
 	.text :
@@ -18,9 +21,12 @@ SECTIONS
 	{
 		* (.rodata);
 	} > flash
+	. = ALIGN(4);
 	.init_array :
 	{
+		init_array_start = .;
 		* (.init_array);
+		init_array_end = .;
 	} > flash
 	.data :
 	{

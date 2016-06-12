@@ -60,6 +60,7 @@ _start:
 	OUT	SPH_IOADDR, R16
 	LDI	R16, lo8(RAMEND)
 	OUT	SPL_IOADDR, R16
+	RCALL	init
 	RCALL	setup
 _label:
 	RCALL	loop

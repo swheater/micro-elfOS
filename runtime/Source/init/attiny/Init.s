@@ -22,6 +22,7 @@
 
 	.func
 _start:
+	RCALL	init
 	RCALL	setup
 _label:
 	RCALL	loop

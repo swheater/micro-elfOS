@@ -16,7 +16,6 @@ public:
     virtual DIO& ledPin(void) = 0;
 
     static D& instance(void);
-private:
 };
 
 #endif
