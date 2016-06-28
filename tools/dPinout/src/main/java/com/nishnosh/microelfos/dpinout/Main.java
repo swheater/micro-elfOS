@@ -19,8 +19,8 @@ public class Main
                         JFrame frame = new JFrame("dPinout");
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
-                        JLabel label = new JLabel("dPinout");
-                        frame.getContentPane().add(label);
+                        BoardPane boardPane = new BoardPane(null, 0, 0, 100, 100);
+                        frame.getContentPane().add(boardPane);
  
                         frame.pack();
                         frame.setVisible(true);
