@@ -6,7 +6,9 @@
 #include <melfos/UART.h>
 #include <melfos/mkx2x/UARTImpl.h>
 
-#define UART_BASE_ADDR       ((Word32*) 0x400FF000)
+#define GPIO_UART_PCR5 ((Word32*) 0x4004B014)
+
+#define UART_BASE_ADDR       ((Word8*) 0x400FF000)
 #define UART_PORT_SPACING    (0x10)
 
 #define UART_OR_PORT_OFFSET  (0x00)
