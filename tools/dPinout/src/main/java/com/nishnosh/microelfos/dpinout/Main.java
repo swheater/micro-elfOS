@@ -4,6 +4,8 @@
 
 package com.nishnosh.microelfos.dpinout;
 
+import java.awt.Container;
+import java.io.File;
 import javax.swing.*;
 
 public class Main
@@ -18,10 +20,13 @@ public class Main
                     {
                         JFrame frame = new JFrame("dPinout");
                         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-                        BoardPane boardPane = new BoardPane(null, 0, 0, 100, 100);
-                        frame.getContentPane().add(boardPane);
- 
+
+                        BoardPane boardPane = new BoardPane(new File("board.png"), 0, 0, 100, 100);
+
+                        Container contentPane = frame.getContentPane();
+                        contentPane.setLayout(new SpringLayout());
+                        contentPane.add(boardPane);
+
                         frame.pack();
                         frame.setVisible(true);
                     }
