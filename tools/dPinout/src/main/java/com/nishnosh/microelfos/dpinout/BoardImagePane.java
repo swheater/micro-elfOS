@@ -4,26 +4,26 @@
 
 package com.nishnosh.microelfos.dpinout;
 
-import java.io.File;
+import java.net.URI;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class BoardPane extends JComponent
+public class BoardImagePane extends JComponent
 {
-    private static final long serialVersionUID = -6756784564052568409L;
+    private static final long serialVersionUID = -4117866230565103567L;
 
-    public BoardPane(File boardImageFile, int x, int y, int width, int height)
+    public BoardImagePane(URI boardImageURI, int x, int y, int width, int height)
     {
         setPreferredSize(new Dimension(width, height));
+
         _boardImageLoaded = false;
         try
         {
-            _boardImage       = ImageIO.read(new File("board.png"));
+            _boardImage       = ImageIO.read(boardImageURI.toURL());
             _boardImageLoaded = true;
         }
         catch (Throwable throwable)
