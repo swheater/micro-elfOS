@@ -7,13 +7,14 @@
 
 #include <melfos/DIO.h>
 
-class DIOImpl: public DIO
+class DIOImpl
 {
 public:
     DIOImpl(unsigned char portNumber, unsigned char pinNumber);
     virtual ~DIOImpl(void);
 
     void begin(void);
+    void begin(unsigned char portNumber, unsigned char pinNumber);
 
     DIO::Direction getDirection(void);
     void           setDirection(DIO::Direction direction);

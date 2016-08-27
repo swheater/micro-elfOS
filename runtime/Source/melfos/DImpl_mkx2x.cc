@@ -14,15 +14,16 @@
 // DIOImpl dio(2, 5);  // Teensy 3.X/LC
 // DIOImpl dio(1, 27); // Arduino Due
 
-DImpl::DImpl(void) : _ledPin(2, 5)
+DImpl::DImpl(void) // : _ledPin(2, 5)
 {
 }
 
 DImpl::~DImpl(void)
 {
 }
-
+/*
 DIO& DImpl::ledPin(void)
 {
     return _ledPin;
 }
+*/

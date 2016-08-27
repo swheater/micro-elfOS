@@ -13,9 +13,9 @@ public:
     D(void);
     virtual ~D(void);
 
-    virtual DIO& ledPin(void) = 0;
+//    virtual DIO& ledPin(void) = 0;
 
-    static D& instance(void);
+//    static D& instance(void);
 };
 
 #endif

@@ -6,8 +6,8 @@
 
 void init(void)
 {
-    for (void (*init_func)(void) = &init_array_start; init_func < &init_array_end; init_func++)
-        (*init_func)();
+//    for (void (*init_func)(void) = &init_array_start; init_func < &init_array_end; init_func++)
+//        (*init_func)();
 }
 
 void __cxa_pure_virtual(void)

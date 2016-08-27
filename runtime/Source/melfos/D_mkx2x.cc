@@ -15,8 +15,9 @@ D::D(void)
 D::~D(void)
 {
 }
-
+/*
 D& D::instance(void)
 {
     return dImpl;
 }
+*/

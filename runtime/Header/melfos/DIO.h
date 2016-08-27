@@ -15,6 +15,7 @@ public:
     virtual ~DIO(void);
 
     virtual void begin(void) = 0;
+    virtual void begin(unsigned char portNumber, unsigned char pinNumber) = 0;
 
     virtual Direction getDirection(void) = 0;
     virtual void      setDirection(Direction direction) = 0;

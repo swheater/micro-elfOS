@@ -30,6 +30,13 @@ DIOImpl::~DIOImpl(void)
 
 void DIOImpl::begin(void)
 {
+}
+
+void DIOImpl::begin(unsigned char portNumber, unsigned char pinNumber)
+{
+    _portNumber = portNumber;
+    _pinNumber  = pinNumber;
+
     setWord32(GPIO_PORTC_PCR5, 0b00000000000000000000000100000000);
     setDirection(DIO::INPUT);
 }

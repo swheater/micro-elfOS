@@ -14,10 +14,10 @@ public:
     DImpl(void);
     virtual ~DImpl(void);
 
-    DIO& ledPin(void);
+//    DIO& ledPin(void);
 
 private:
-    DIOImpl _ledPin;
+//    DIOImpl _ledPin;
 };
 
 #endif
