@@ -8,7 +8,7 @@
 
 #define GPIO_UART_PCR5 ((Word32*) 0x4004B014)
 
-#define UART_BASE_ADDR       ((Word8*) 0x400FF000)
+#define UART_BASE_ADDR       ((Byte*) 0x400FF000)
 #define UART_PORT_SPACING    (0x10)
 
 #define UART_OR_PORT_OFFSET  (0x00)
@@ -29,9 +29,15 @@ UARTImpl::~UARTImpl(void)
 
 char UARTImpl::read(void)
 {
-    return 0;
+    Byte* orRegAddress = UART_OR_PORT_OFFSET + (_uartNumber * UART_PORT_SPACING) + UART_BASE_ADDR;
+
+    return (*orRegAddress);
 }
 
 void UARTImpl::write(char value)
 {
+    Byte* sorRegAddress = UART_SOR_PORT_OFFSET + (_uartNumber * UART_PORT_SPACING) + UART_BASE_ADDR;
+    Byte* orRegAddress  = UART_OR_PORT_OFFSET + (_uartNumber * UART_PORT_SPACING) + UART_BASE_ADDR;
+
+    (*sorRegAddress) = (*orRegAddress) | value;
 }

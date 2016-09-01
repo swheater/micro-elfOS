@@ -57,4 +57,4 @@ clean:
 	$(MAKE) -C lds clean
 	$(MAKE) -C Header clean
 	$(MAKE) -C Source clean
-	$(RM) $(RMFLAGS) *.elf *.hex *.map
+	$(RM) $(RMFLAGS) *~ *.elf *.hex *.map
