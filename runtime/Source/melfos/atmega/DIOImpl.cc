@@ -17,15 +17,12 @@ DIOImpl::DIOImpl(unsigned char portNumber, unsigned char pinNumber)
 {
     _portNumber = portNumber;
     _pinNumber  = pinNumber;
+
+    setDirection(DIO::INPUT);
 }
 
 DIOImpl::~DIOImpl(void)
 {
-}
-
-void DIOImpl::begin(void)
-{
-    setDirection(DIO::INPUT);
 }
 
 DIO::Direction DIOImpl::getDirection(void)

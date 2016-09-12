@@ -4,30 +4,31 @@
 
 #include <App.h>
 #include <Memory.h>
-#include <melfos/mkx2x/WDTImpl.h>
-#include <melfos/mkx2x/SIMImpl.h>
-#include <melfos/mkx2x/DIOImpl.h>
+#include <melfos/stm32f4/WDTImpl.h>
+#include <melfos/stm32f4/SIMImpl.h>
+#include <melfos/stm32f4/DIOImpl.h>
 
 void setup(void)
 {
     WDTImpl wdt;
     SIMImpl sim;
 //    DIOImpl dio(1, 5); // Pro Trinket
+    DIOImpl dio(0, 5); // Nucleo F411RE
 //    DIOImpl dio(1, 1); // Trinket
-    DIOImpl dio(2, 5); // Teensy 3.X/LC
+//    DIOImpl dio(2, 5); // Teensy 3.X/LC
 //    DIOImpl dio(1, 27); // Arduino Due
 
     wdt.begin();
     sim.begin();
-    dio.begin();
     dio.setDirection(DIO::OUTPUT);
 }
 
 void loop(void)
 {
 //    DIOImpl dio(1, 5); // Pro Trinket
+    DIOImpl dio(0, 5); // Nucleo F411RE
 //    DIOImpl dio(1, 1); // Trinket
-    DIOImpl dio(2, 5); // Teensy 3.X/LC
+//    DIOImpl dio(2, 5); // Teensy 3.X/LC
 //    DIOImpl dio(1, 27); // Arduino Due
 
     volatile long count;

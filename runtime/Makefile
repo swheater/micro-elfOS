@@ -34,7 +34,7 @@ OBJS = Source/init/$(FAMILY)/Init.o \
        Source/melfos/D_$(FAMILY).o \
        Source/melfos/DImpl_$(FAMILY).o
 
-all: app.hex
+all: app.hex app.bin
 
 .s.o:
 	$(AS) $(ASFLAGS) -o $@ $<
@@ -52,9 +52,12 @@ app.elf app.map: lds/app-$(DEVICE).lds $(OBJS)
 app.hex: app.elf
 	$(OBJCOPY) $(OBJCOPYFLAGS) -O ihex app.elf app.hex
 
+app.bin: app.elf
+	$(OBJCOPY) $(OBJCOPYFLAGS) -O binary app.elf app.bin
+
 clean:
 	$(MAKE) -C mk clean
 	$(MAKE) -C lds clean
 	$(MAKE) -C Header clean
 	$(MAKE) -C Source clean
-	$(RM) $(RMFLAGS) *~ *.elf *.hex *.map
+	$(RM) $(RMFLAGS) *~ *.elf *.hex *.bin *.map

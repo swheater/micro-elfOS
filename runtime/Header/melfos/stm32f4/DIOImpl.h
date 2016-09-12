@@ -13,8 +13,6 @@ public:
     DIOImpl(unsigned char portNumber, unsigned char pinNumber);
     virtual ~DIOImpl(void);
 
-    void begin(void);
-
     DIO::Direction getDirection(void);
     void           setDirection(DIO::Direction direction);
 
