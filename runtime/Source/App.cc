@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2015-2016, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
+ * Copyright (c) 2015-2018, Stuart Wheater, Newcastle upon Tyne, England. All rights reserved.
  */
 
 #include <App.h>
 #include <Memory.h>
-#include <melfos/stm32f4/WDTImpl.h>
-#include <melfos/stm32f4/SIMImpl.h>
-#include <melfos/stm32f4/DIOImpl.h>
+#include <melfos/samc21/WDTImpl.h>
+#include <melfos/samc21/SIMImpl.h>
+#include <melfos/samc21/DIOImpl.h>
 
 void setup(void)
 {
