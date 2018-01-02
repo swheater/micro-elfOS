@@ -19,3 +19,8 @@ void operator delete(void* ptr)
 {
     while (1);
 }
+
+void operator delete(void* ptr, unsigned int size)
+{
+    while (1);
+}
