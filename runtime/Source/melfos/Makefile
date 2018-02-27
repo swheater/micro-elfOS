@@ -8,4 +8,5 @@ clean:
 	$(MAKE) -C stm32f4 clean
 	$(MAKE) -C atmega clean
 	$(MAKE) -C attiny clean
+	$(MAKE) -C samc21 clean
 	$(RM) $(RMFLAGS) *~ *.o
